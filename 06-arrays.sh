@@ -6,3 +6,5 @@ MOVIES=( "RRR" , "Bahuali" , "Varanasi" )
 # size of array count with 1 
 
 echo "first movie name: ${MOVIES[0]}"
+echo "second movie name: ${MOVIES[1]}"
+echo "all movies: ${MOVIES[@]}"
