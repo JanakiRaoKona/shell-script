@@ -1,5 +1,6 @@
 #!/bin/bash
-#inreview questions
+#interview questions
 
 echo "All variables: $@"
 echo "Number of variables passed: $#"
+echo "script name $0"
