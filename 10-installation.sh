@@ -28,5 +28,5 @@ then
     exit 1 # manually exit if errors come
 else 
     echo "installation of my git is success"
-
+fi
 echo "is script proceeding..?"
