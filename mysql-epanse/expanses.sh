@@ -34,8 +34,8 @@ VALIDATE $? "Installing MYSQL Server"
 systemctl enable mysqld &>>$LOGFILE
 VALIDATE $? "Enable MYSQL Server"
 
-systemctl start mysqld -y &>>$LOGFILE
+systemctl start mysqld &>>$LOGFILE
 VALIDATE $? "Start MYSQL Server"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 -y &>>$LOGFILE
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
 VALIDATE $? "Password setup MYSQL Server"
