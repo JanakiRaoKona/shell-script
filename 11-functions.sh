@@ -25,7 +25,7 @@ else
 fi
 dnf install mysql-server -y &>>$LOGFILE
 
-VALIDATE $? "Installing Mysql server"
+VALIDATE $? "Installing MYSQL server"
 
 dnf install git -y
 VALIDATE $? "Installing Git server" &>>$LOGFILE
