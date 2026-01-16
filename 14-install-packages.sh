@@ -1,46 +1,43 @@
 #!/bin/bash
 
-# Use all concepts till now we learning install some packages.
 USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
-SCRIPTNAME=$(echo $0 | cut -d "." -f1)
+SCRIPTNAME=$(basename $0 .sh)
 LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
 
-USERID=$(id -u)
-
-R="/e/[31m"
-G="/e/[32m"
-N="/e/[0m"
-Y="/e/[33m"
-
-VALIDATE () {
-    if [ $1 -ne 0 ]
-        then 
-            echo "$2 is failure....💔"
-            exit 1
-        else 
-            echo "$2 is success...✅"
-    fi
-
-}
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
 if [ $USERID -ne 0 ]
-then 
-    echo "Please run this script root user access"
-    exit 1 # manually exit if errors come
+then
+    echo -e "${R}Please run this script with root access${N}"
+    exit 1
 else
-    echo "Your super root user 🔥"
+    echo -e "${G}Your super root user 🔥${N}"
 fi
+
 echo "All packages: $@"
 
-for i in $@
+for i in "$@"
 do
     echo "Package to install: $i"
     dnf list installed $i &>>$LOGFILE
-    if [ $? -eq 0 ] 
+
+    if [ $? -eq 0 ]
+    then
+        echo -e "${Y}Already installed${N} → skip the command"
+    else
+        echo -e "${G}Installing${N} $i"
+        dnf install $i -y &>>$LOGFILE
+
+        if [ $? -eq 0 ]
         then
-            echo -e "Already installed $Y skip.... $N the command"
+            echo -e "${G}$i installed successfully ✅${N}"
         else
-            echo -e "Need to install $Y packages.. $N"
+            echo -e "${R}$i installation failed ❌${N}"
+            exit 1
+        fi
     fi
 done
