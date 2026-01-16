@@ -39,8 +39,8 @@ do
     dnf list installed $i &>>$LOGFILE
     if [ $? -eq 0 ] 
         then
-            echo "Already installed $Y skip.... $N the command"
+            echo -e "Already installed $Y skip.... $N the command"
         else
-            echo "Need to install $Y packages.. $N"
+            echo -e "Need to install $Y packages.. $N"
     fi
 done
