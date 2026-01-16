@@ -2,7 +2,7 @@
 
 USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
-SCRIPTNAME=$(basename $0 .sh)
+SCRIPTNAME=$(echo $0 | cut -d "." -f1)
 LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
 
 R="\e[31m"
@@ -13,19 +13,19 @@ N="\e[0m"
 VALIDATE () {
     if [ $1 -ne 0 ]
     then
-        echo -e "${R}$2 failed ❌${N}"
+        echo -e "$R $2 failed ❌ $N"
         exit 1
     else
-        echo -e "${G}$2 success ✅${N}"
+        echo -e "$G $2 success ✅ $N"
     fi
 }
 
 if [ $USERID -ne 0 ]
 then
-    echo -e "${R}Please run this script with root access${N}"
+    echo -e "$R Please run this script with root access. $N"
     exit 1
 else
-    echo -e "${G}Your super root user 🔥${N}"
+    echo -e "$G Your super root user 🔥$N"
 fi
 
 dnf install mysql-server -y &>>$LOGFILE
