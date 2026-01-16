@@ -7,6 +7,15 @@ USERID=$(id -u)
 VALIDATE () {
     echo "Exit status: $1"
     echo "what are you doing?: $2"
+    if [$1 -ne 0]
+        then 
+            echo "$2 is failure....💔"
+            exit 1
+        else 
+            echo "$2 is success...✅"
+    fi
+        echo "is script proceeding..?"
+
 }
 
 if [ $USERID -ne 0 ]
@@ -37,4 +46,3 @@ VALIDATE $? "Installing Git server"
 # else 
 #     echo "installation of my git is success"
 # fi
-echo "is script proceeding..?"
