@@ -7,13 +7,19 @@ TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPTNAME=$(echo $0 | cut -d "." -f1)
 LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
 
+R = "/e/[31m"
+G = "/e/[32m"
+N = "/e/[0m"
+
+echo "shell script started sxecuting here: $TIMESTAMP"
+
 VALIDATE () {
     if [ $1 -ne 0 ]
         then 
-            echo "$2 is failure....💔"
+            echo -e "$2 is $R failure....💔 $N"
             exit 1
         else 
-            echo "$2 is success...✅"
+            echo -e "$2 is $G success...✅ $N"
     fi
 
 }
@@ -30,4 +36,7 @@ dnf install mysql-server -y &>>$LOGFILE
 VALIDATE $? "Installing MYSQL server"
 
 dnf install git -y &>>$LOGFILE
+VALIDATE $? "Installing Git server"
+
+dnf install wrong-command -y &>>$LOGFILE
 VALIDATE $? "Installing Git server"
