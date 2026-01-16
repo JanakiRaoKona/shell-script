@@ -19,3 +19,4 @@ then
     exit 1 # manually exit if errors come
 fi
 dnf install git -y
+echo "is script proceeding..?"
