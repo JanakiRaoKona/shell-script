@@ -12,3 +12,10 @@ else
     echo "Your super user"
 fi
 dnf install mysql-server -y
+
+if [ $? -ne 0 ]
+then 
+    echo "installation of my sql is failure.."
+    exit 1 # manually exit if errors come
+fi
+dnf install git -y
