@@ -10,6 +10,16 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+VALIDATE () {
+    if [ $1 -ne 0 ]
+    then
+        echo -e "${R}$2 failed ❌${N}"
+        exit 1
+    else
+        echo -e "${G}$2 success ✅${N}"
+    fi
+}
+
 if [ $USERID -ne 0 ]
 then
     echo -e "${R}Please run this script with root access${N}"
@@ -27,17 +37,10 @@ do
 
     if [ $? -eq 0 ]
     then
-        echo -e "${Y}Already installed${N} → skip the command"
+        echo -e "${Y}$i already installed → skipping${N}"
     else
-        echo -e "${G}Installing${N} $i"
         dnf install $i -y &>>$LOGFILE
-
-        if [ $? -eq 0 ]
-        then
-            echo -e "${G}$i installed successfully ✅${N}"
-        else
-            echo -e "${R}$i installation failed ❌${N}"
-            exit 1
-        fi
+        VALIDATE $? "Installing $i"
     fi
 done
+
