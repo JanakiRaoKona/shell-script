@@ -1,7 +1,3 @@
-#!/bin/bash
-
-# install mysql server
-
 USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPTNAME=$(echo $0 | cut -d "." -f1)
@@ -29,20 +25,5 @@ dnf install mysql-server -y &>>$LOGFILE
 
 VALIDATE $? "Installing Mysql server"
 
-# if [ $? -ne 0 ]
-# then 
-#     echo "installation of my sql is failure...💔"
-#     exit 1 # manually exit if errors come
-# else 
-#     echo "installation of my sql is success"
-# fi
-
 dnf install git -y
 VALIDATE $? "Installing Git server" &>>$LOGFILE
-# if [ $? -ne 0 ]
-# then 
-#     echo "installation of my git is failure...💔"
-#     exit 1 # manually exit if errors come
-# else 
-#     echo "installation of my git is success"
-# fi
