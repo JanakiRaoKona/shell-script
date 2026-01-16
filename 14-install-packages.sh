@@ -13,7 +13,7 @@ else
 fi
 echo "All packages: $@"
 
-for i in {$@}
+for i in $@
 do
 echo "Package to install: $i"
 done
