@@ -3,6 +3,9 @@
 # install mysql server
 
 USERID=$(id -u)
+TIMESTAMP=$(date +%F-%H-%M-%S)
+SCRIPTNAME=$($0 | cut -d "." -f1)
+LOGFILE=/temp/$SCRIPTNAME-$TIMESTAMP.log
 
 VALIDATE () {
     if [ $1 -ne 0 ]
@@ -23,7 +26,7 @@ then
 else
     echo "Your super user"
 fi
-dnf install mysql-server -y
+dnf install mysql-server -y &>>$LOGFILE
 
 VALIDATE $? "Installing Mysql server"
 
@@ -36,7 +39,7 @@ VALIDATE $? "Installing Mysql server"
 # fi
 
 dnf install git -y
-VALIDATE $? "Installing Git server"
+VALIDATE $? "Installing Git server" &>>$LOGFILE
 # if [ $? -ne 0 ]
 # then 
 #     echo "installation of my git is failure...💔"
