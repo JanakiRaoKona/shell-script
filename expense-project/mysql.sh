@@ -7,7 +7,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-echo "Please Enter your Password:"
+
 read -s my_sql_root_password
 
 VALIDATE(){
@@ -42,6 +42,7 @@ VALIDATE $? "Starting MySQL Server"
 # VALIDATE $? "Setting up root password"
 
 #Below code will e the idempotent nature
+echo "Please Enter your Password:"
 mysql -h db.janakiraodevopsapps.fun -uroot -p${my_sql_root_password} -e "SHOW DATABASES;" &>>$LOGFILE
 
 if [ $? -ne 0 ]
