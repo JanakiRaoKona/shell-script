@@ -2,40 +2,42 @@
 
 USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
-SCRIPTNAME=$(echo $0 | cut -d "." -f1)
-LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
-
+SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
+LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+echo "Please enter DB password:"
+read -s mysql_root_password
 
-VALIDATE () {
-    if [ $1 -ne 0 ]
-    then
-        echo -e "$2 $R failed ❌ $N"
+VALIDATE(){
+   if [ $1 -ne 0 ]
+   then
+        echo -e "$2...$R FAILURE $N"
         exit 1
     else
-        echo -e "$2 $G success... ✅ $N"
+        echo -e "$2...$G SUCCESS $N"
     fi
 }
 
 if [ $USERID -ne 0 ]
 then
-    echo -e "$R Please run this script with root access. $N"
-    exit 1
+    echo "Please run this script with root access."
+    exit 1 # manually exit if error comes.
 else
-    echo -e "Your super $G root user. 🔥$N"
+    echo "You are super user."
 fi
 
+
 dnf install mysql-server -y &>>$LOGFILE
-VALIDATE $? "Installing MYSQL Server"
+VALIDATE $? "Installing MySQL Server"
 
 systemctl enable mysqld &>>$LOGFILE
-VALIDATE $? "Enable MYSQL Server"
+VALIDATE $? "Enabling MySQL Server"
 
 systemctl start mysqld &>>$LOGFILE
-VALIDATE $? "Start MYSQL Server"
+VALIDATE $? "Starting MySQL Server"
 
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
-VALIDATE $? "Set root password MYSQL Server"
+VALIDATE $? "Setting up root password"
