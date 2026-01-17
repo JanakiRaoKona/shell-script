@@ -44,6 +44,5 @@ if [ $? -ne 0 ]
         useradd expense
         VALIDATE $? "User added to nodejs"
     else
-        echo -e "User expense is already created. ${Y}SKIPPING...${N}"
-
+        echo -e "User expense is already created $Y SKIPPING... $N"
 fi
