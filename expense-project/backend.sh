@@ -47,3 +47,18 @@ if [ $? -ne 0 ]
     else
         echo -e "User expense is already created $Y SKIPPING... $N"
 fi
+
+mkdir -p /app &>>$LOGFILE
+VALIDATE $? "Creating app directory"
+
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGFILE
+VALIDATE $? "Downloading the code..."
+
+cd /app &>>$LOGFILE
+unzip /tmp/backend.zip
+VALIDATE $? "Extracting backend code"
+
+npm install &>>$LOGFILE
+VALIDATE $? "Install npm dependencies"
+
+# /home/ec2-user/shell-script/expense-project/
