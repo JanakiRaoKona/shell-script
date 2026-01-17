@@ -7,6 +7,9 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+echo "Please Enter your Password:"
+read -s my_sql_root_password
+
 VALIDATE(){
    if [ $1 -ne 0 ]
    then
@@ -39,11 +42,11 @@ VALIDATE $? "Starting MySQL Server"
 # VALIDATE $? "Setting up root password"
 
 #Below code will e the idempotent nature
-mysql -h db.janakiraodevopsapps.fun -uroot -pExpenseApp@1 -e "SHOW DATABASES;" &>>$LOGFILE
+mysql -h db.janakiraodevopsapps.fun -uroot -p${my_sql_root_password} -e "SHOW DATABASES;" &>>$LOGFILE
 
 if [ $? -ne 0 ]
     then
-        mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+        mysql_secure_installation --set-root-pass ${my_sql_root_password} &>>$LOGFILE
         VALIDATE $? "Setting up root password"
     else
         echo -e "MYSQL root password is already setup $Y SKIPPING... $N"
