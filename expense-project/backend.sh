@@ -36,8 +36,8 @@ VALIDATE $? "Enabling nodejs latest version:24"
 dnf install nodejs -y &>>$LOGFILE
 VALIDATE $? "Installing nodejs"
 
-useradd expense
-VALIDATE $? "User added to nodejs"
+# useradd expense
+# VALIDATE $? "User added to nodejs"
 
 if[ $? -ne 0 ]
     then
