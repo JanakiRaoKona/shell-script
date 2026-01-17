@@ -7,7 +7,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-echo "Please Enter your Password at (Enter Password: )"
+echo "Press Enter button.."
 read -s my_sql_root_password
 
 VALIDATE(){
