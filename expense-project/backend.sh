@@ -9,6 +9,9 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+echo "Click Enter Button.."
+read -s my_sql_root_password
+
 VALIDATE(){
    if [ $1 -ne 0 ]
    then
@@ -61,4 +64,21 @@ VALIDATE $? "Extracting backend code"
 npm install &>>$LOGFILE
 VALIDATE $? "Install npm dependencies"
 
-# /home/ec2-user/shell-script/expense-project/
+cp /home/ec2-user/shell-script/expense-project/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
+VALIDATE $? "Copied backend service"
+
+systemctl daemon-reload &>>$LOGFILE
+VALIDATE $? "Reloading... backend"
+systemctl start backend &>>$LOGFILE
+VALIDATE $? "Starting... backend"
+systemctl enable backend &>>$LOGFILE
+VALIDATE $? "Enabling... backend"
+
+dnf install mysql -y &>>$LOGFILE
+VALIDATE $? "Installing MYSQL Client"
+
+mysql -h db.janakiraodevopsapps.fun -uroot -p${my_sql_root_password} < /app/schema/backend.sql &>>$LOGFILE
+VALIDATE $? "Schema Loading..."
+
+systemctl restart backend &>>$LOGFILE
+VALIDATE $? "ReStarting... backend"
