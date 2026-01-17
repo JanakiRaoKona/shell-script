@@ -13,10 +13,10 @@ N="\e[0m"
 VALIDATE () {
     if [ $1 -ne 0 ]
     then
-        echo -e "$R $2 failed ❌ $N"
+        echo -e "$2 $R failed ❌ $N"
         exit 1
     else
-        echo -e "$G $2 success ✅ $N"
+        echo -e "$2 $G success... ✅ $N"
     fi
 }
 
@@ -25,7 +25,7 @@ then
     echo -e "$R Please run this script with root access. $N"
     exit 1
 else
-    echo -e "$G Your super root user 🔥$N"
+    echo -e "Your super $G root user. 🔥$N"
 fi
 
 dnf install mysql-server -y &>>$LOGFILE
@@ -36,3 +36,6 @@ VALIDATE $? "Enable MYSQL Server"
 
 systemctl start mysqld &>>$LOGFILE
 VALIDATE $? "Start MYSQL Server"
+
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+VALIDATE $? "Set root password MYSQL Server"
