@@ -38,3 +38,11 @@ VALIDATE $? "Installing nodejs"
 
 useradd expense
 VALIDATE $? "User added to nodejs"
+
+if[ $? -ne 0 ]
+    then
+        useradd expense
+        VALIDATE $? "User added to nodejs"
+    else
+        echo "User expense is already created $Y SKIPPING... $N"
+fi
