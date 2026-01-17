@@ -1,3 +1,5 @@
+#!/bin/bash
+
 USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
@@ -7,7 +9,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-echo "Press Enter button.."
+echo "Click Enter Button.."
 read -s my_sql_root_password
 
 VALIDATE(){
