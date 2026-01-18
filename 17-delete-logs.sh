@@ -25,7 +25,7 @@ echo "Files to delete $FILES"
 #   c=$((c+1))  
 # done < <(tcpdump -n -r "$pcap")
 
-while IFS=read -r line
+while IFS= read -r line
 do
 	echo "Deleting Files $IFS"
 done <<< $FILES
