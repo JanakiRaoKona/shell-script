@@ -15,5 +15,15 @@ if [ -d $SOURCE_DIRECTORY ]
         exit 1
 fi
 
-FILES=$(find . -name "*.log" -type f -mtime +7)
+FILES=$(find $SOURCE_DIRECTORY -name "*.log" -type f -mtime +7)
 echo "Files to delete $FILES"
+
+# while read line; do  
+#   ARRAY[$c]="$line"
+#   c=$((c+1))  
+# done < <(tcpdump -n -r "$pcap")
+
+# while IFS= read -r line
+# do
+# 	statements to execute
+# done <<< input
