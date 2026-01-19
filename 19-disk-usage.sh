@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DISK_USAGE=$(df -hT | grep xfs)
-DISK_THREASOLD=20
+DISK_THREASOLD=2
 MESSAGE=""
 while IFS= read -r line
 do
