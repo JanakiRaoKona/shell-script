@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MOVIES=( "RRR" , "Bahuali" , "Varanasi" )
+MOVIES=( "RRR" , "Bahubali" , "Varanasi" )
 
 # in array indexes are start with zero
 # size of array count with 1 
