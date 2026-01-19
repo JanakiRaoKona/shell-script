@@ -11,11 +11,11 @@ if [ -d $SOURCE_DIRECTORY ]
     then 
         echo -e "$G Source directory exists $N"
     else
-        echo -e "$R Please make sure $SOURCE_DIRECTORY exists $N"
+        echo -e "$R Please make sure $SOURCE_DIRECTORY is exists $N"
         exit 1
 fi
 
-FILES=$(find $SOURCE_DIRECTORY -name "*.log" -type f -mtime +7)
+FILES=$(find $SOURCE_DIRECTORY -name "*.logs" -type f -mtime +7)
 echo "Files to delete $FILES"
 
 
