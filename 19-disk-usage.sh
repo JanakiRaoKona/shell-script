@@ -9,7 +9,7 @@ USAGE=$(echo $line | awk -F " " '{print $6F}' | cut -d "%" -f1)
 FOLDER=$(echo $line | awk -F " " '{print $NF}')
 if [ $USAGE -ge $DISK_THREASOLD ]
 then 
-    MESSAGE=echo "$FOLDER is greatet than $DISK_THREASOLD current usage: $USAGE"
+    MESSAGE="$FOLDER is greatet than $DISK_THREASOLD current usage: $USAGE"
 fi
 
 
