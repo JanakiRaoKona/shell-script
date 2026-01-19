@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DISK_USAGE=$(df -hT | grep xfs)
-DISK_THREASOLD=2
+DISK_THREASOLD=70
 MESSAGE=""
 while IFS= read -r line
 do
@@ -14,5 +14,5 @@ fi
 
 
 done <<< $DISK_USAGE
-echo "Message: $MESSAGE"
+echo "Sent Message: $MESSAGE"
 echo "$MESSAGE" | mail -s "Disk Usage Alert 🚨" konajanakirao1998@gmail.com
