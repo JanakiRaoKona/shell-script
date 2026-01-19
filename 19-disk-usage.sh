@@ -10,5 +10,7 @@ FOLDER=$(echo $line | awk -F " " '{print $NF}')
 if [ $USAGE -ge $DISK_THREASOLD ]
 then 
     echo "$FOLDER is greatet than $DISK_THREASOLD current usage: $USAGE"
+fi
+
 
 done <<< $DISK_USAGE
