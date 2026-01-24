@@ -5,7 +5,8 @@
 USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPTNAME=$(echo $0 | cut -d "." -f1)
-echo $SCRIPTNAME
+echo "this is script name: $SCRIPTNAME"
+
 LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
 
 VALIDATE () {
