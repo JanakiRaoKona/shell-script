@@ -40,3 +40,11 @@ VALIDATE $? "Installing Git server"
 
 dnf install wrong-command -y &>>$LOGFILE
 VALIDATE $? "Installing Git server"
+
+
+
+
+# $? --> to check the exit status of previous command
+# 0 --> success
+# other than 0 --> failure
+# 1-127
