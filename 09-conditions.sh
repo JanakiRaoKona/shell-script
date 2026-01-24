@@ -9,3 +9,4 @@ else
     echo "Given number: $NUMBER is less than 10"
 
 fi
+
