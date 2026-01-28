@@ -6,6 +6,7 @@ USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPTNAME=$(echo $0 | cut -d "." -f1)
 echo "this is script name: $SCRIPTNAME"
+echo "this is print under shell user id: $USERID"
 
 LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
 
