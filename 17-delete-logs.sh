@@ -15,7 +15,7 @@ if [ -d $SOURCE_DIRECTORY ]
         exit 1
 fi
 
-FILES=$(find $SOURCE_DIRECTORY -name "*.logs" -type f -mtime +7)
+FILES=$(find $SOURCE_DIRECTORY -name "*.logs")
 echo "Files to delete $FILES"
 
 
@@ -30,3 +30,6 @@ do
 	echo "Deleting Files $line"
     rm -rf $line
 done <<< $FILES
+
+
+# find $SOURCE_DIRECTORY -name "*.logs" -type f -mtime +7
