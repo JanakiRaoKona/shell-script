@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PERSON1=Jhon
+PERSON1=Jhon #no space between = operator
 PERSON2=Peter
 
 echo "$PERSON1 :: Hello $PERSON2 How are you ?"
