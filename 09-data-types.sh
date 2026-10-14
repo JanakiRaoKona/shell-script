@@ -11,4 +11,4 @@ echo "Count : ${COUNT}"
 
 FRUITS=("Apple" "Banana" "Papaya" "Orange") #list
 echo "Fetch all fruits in the list: ${FRUITS[@]}"
-echo "Fetch first fruit in the list: ${FRUITS[@]}"
+echo "Fetch first fruit in the list: ${FRUITS[0]}"
