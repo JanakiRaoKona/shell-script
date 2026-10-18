@@ -32,7 +32,7 @@ do
         dnf install $package -y &>> $logs_file
         validate $? "${package} installation"
     else 
-        echo "${package} is already installed...SKIPPING}"
+        echo "${package} is already installed...SKIPPING"
     fi
 done 
     
