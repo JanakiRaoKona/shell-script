@@ -10,7 +10,7 @@ if [ $user_id -ne 0 ]; then
     exit 1
 fi
 
-mkdir $ $logs_folder
+mkdir -p $ $logs_folder
 
 echo "Script exection starting time $(date +"%F %T")"
 
