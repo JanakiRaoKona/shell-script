@@ -4,6 +4,7 @@ user_id=$(id -u)
 
 logs_folder="/var/log/shell-script"
 logs_file="${logs_folder}/${0}.log"
+echo "before : ${logs_file}"
 
 
 if [ $user_id -ne 0 ]; then
@@ -12,7 +13,7 @@ if [ $user_id -ne 0 ]; then
 fi
 
 mkdir -p "${logs_folder}"
-echo "${logs_file}"
+echo "after : ${logs_file}"
 
 
 echo "Script exection starting time $(date +"%F %T")" &>> $logs_file
