@@ -24,7 +24,6 @@ validate () {
     fi
 }
 
-echo "Proceeding..."
 dnf install nginx -y &>> $logs_file
 validate $? "Nginx installation"
 
@@ -33,4 +32,3 @@ validate $? "Msql installation"
 
 echo "Script exection completed time $(date +"%F %T")" &>> $logs_file
 
-echo "is Still proceeding..."
