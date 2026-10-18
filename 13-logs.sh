@@ -12,6 +12,7 @@ if [ $user_id -ne 0 ]; then
 fi
 
 mkdir -p $ $logs_folder
+logs_file="${log_folder}/${0}.log"
 echo $logs_file
 
 
