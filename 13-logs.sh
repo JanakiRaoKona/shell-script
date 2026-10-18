@@ -5,6 +5,8 @@ user_id=$(id -u)
 logs_folder="/var/log/shell-script"
 logs_file="${log_folder}/${0}.log"
 
+echo $logs_file
+
 if [ $user_id -ne 0 ]; then
     echo "Please run this script with sudo access..."
     exit 1
