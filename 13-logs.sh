@@ -12,7 +12,7 @@ fi
 
 mkdir $ $logs_folder
 
-echo "Script exection starting time $(date +"%F "T)"
+echo "Script exection starting time $(date +"%F %T")"
 
 validate () {
     
@@ -31,6 +31,6 @@ validate $? "Nginx installation"
 dnf install mysql -y &>> $logs_file
 validate $? "Msql installation"
 
-echo "Script exection completed time $(date +"%F "T)"
+echo "Script exection completed time $(date +"%F %T")"
 
 echo "is Still proceeding..."
