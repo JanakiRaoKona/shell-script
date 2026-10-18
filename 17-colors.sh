@@ -1,10 +1,10 @@
 #!/bin/bash
 
 user_id=$(id -u)
-R="\e[31"
-G="\e[32"
-Y="\e[33"
-N="\e[0"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
 logs_folder="/var/log/shell-script"
 logs_file="${logs_folder}/${0}.log"
@@ -21,10 +21,10 @@ echo "Script exection starting time $(date +"%F %T")" &>> $logs_file
 validate () {
     
     if [ $? -ne 0 ]; then 
-        echo -e "${2}... ${R} FAILED ${N}" | tee -a $logs_file
+        echo -e "${2}...${R}FAILED${N}" | tee -a $logs_file
         exit 1
     else
-        echo -e "${2}... ${G} SUCCESS ${N}" | tee -a $logs_file
+        echo -e "${2}...${G}SUCCESS${N}" | tee -a $logs_file
     fi
 }
 
@@ -36,7 +36,7 @@ do
         dnf install $package -y &>> $logs_file
         validate $? "${package} installation"
     else 
-        echo -e "${package} is already installed...${Y} SKIPPING ${N}"
+        echo -e "${package} is already installed...${Y}SKIPPING${N}"
     fi
 done 
     
