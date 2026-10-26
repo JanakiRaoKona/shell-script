@@ -14,12 +14,12 @@ usage () {
     exit 1 
 }
 
-if [ -z "${source_dir}" ]; then 
+if [ -z "${source_dir}" ]; then  # -z means empty dir 
     echo "ERR:: Missing Parameters"
     usage
 fi
 
-if [ ! -d  "${source_dir}" ]; then 
+if [ ! -d  "${source_dir}" ]; then  # -d means dir is exist 
     echo -e "${R}ERR:: ${source_dir} is does not exist.${N}"
 
 fi
