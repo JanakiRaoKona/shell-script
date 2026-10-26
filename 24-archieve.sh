@@ -17,7 +17,7 @@ usage () {
 
 if [ -z "$source_dir" ] || [ -z "$dest_dir" ]; then 
     echo "either source or dest_dir are missing..."
-    usage 
+  
 fi
 
 if [ ! -d  "${dest_dir}" ]; then  # -d means dir is exist 
