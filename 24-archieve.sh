@@ -17,7 +17,13 @@ usage () {
 
 if [ -z "$source_dir" ] || [ -z "$dest_dir" ]; then 
     echo "either source or dest_dir are missing..."
+    usage
   
+fi
+
+if [ ! -d  "${source_dir}" ]; then  # -d means dir is exist 
+    echo -e "${R}ERR:: ${source_dir} is does not exist.${N}"
+
 fi
 
 if [ ! -d  "${dest_dir}" ]; then  # -d means dir is exist 
