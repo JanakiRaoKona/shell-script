@@ -38,7 +38,7 @@ do
     echo "File is going to be deleted: $line"
     rm -r $line
     echo "File deleted: $line"
-done <<< files_to_delete
+done <<< $files_to_delete
 
 # < ---> for file as a input
 # <<< ---> for variable as input 
