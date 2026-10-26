@@ -30,3 +30,10 @@ if [ ! -d  "${dest_dir}" ]; then  # -d means dir is exist
     echo -e "${R}[ERR]:: ${dest_dir} is does not exist.${N}"
 
 fi
+echo "Scanning  a files older than $days in $source_dir"
+files_to_archieve=$(find $source_dir -name "*.log" -type f -mtime +$days)
+
+if [ -z "${files_to_archieve}" ]; then 
+    echo -e "No logs file found... older than $days days"
+    exit 0
+fi
