@@ -46,13 +46,13 @@ if [ $? -ne 0 ]; then
     exit 1 
 else
     echo "logs are archived"
-    
+
     while IFS= read -r line;
 
     do
         echo "File is going to be deleted: $line"
         rm -r $line
         echo "File deleted: $line"
-    done <<< $files_to_delete
+    done <<< $files_to_archive
 fi
 
