@@ -37,7 +37,7 @@ if [ -z "${files_to_archive}" ]; then
     echo -e "No logs file found... older than $days days"
     exit 0
 fi
-time_stamp=$( date +%Y-%m-%d-%H-%M-%S )
+time_stamp=$(date +%Y-%m-%d-%H-%M-%S)
 file_name="$dest_dir/log-time_stamp.tar.gz"
 
 tar -czf $file_name $files_to_archive
