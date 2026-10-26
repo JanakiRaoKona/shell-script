@@ -10,7 +10,7 @@ days=${2:-14} # if user is not passing days we will take 14 is default days
 
 usage () {
 
-    echo -e "${R}USAGE:: $0 [SOURCE_DIR] [days ( optional , default to 14 days )]${N}"
+    echo -e "${R}USAGE:: $0 [source_dir] [days ( optional , default to 14 days )]${N}"
     exit 1 
 }
 
@@ -24,7 +24,7 @@ if [ ! -d  "${source_dir}" ]; then
 
 fi
 
-echo "Scanning  a files older than $day in $source_dir"
+echo "Scanning  a files older than $days in $source_dir"
 files_to_delete=$(find $source_dir -name "*.log" -type f -mtime +$days)
 
 if [ -z "${files_to_delete}" ]; then 
