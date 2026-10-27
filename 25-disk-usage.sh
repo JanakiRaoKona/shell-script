@@ -2,6 +2,8 @@
 
 disk_usage=$(df -hT | grep -v Filesystem)
 usage_thresold=20
+server_ip=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+
 
 while IFS= read -r line
 do
@@ -14,3 +16,5 @@ do
 done <<< "$disk_usage" 
 
 echo -e $msg 
+
+sh mail.sh "DevOps Team" "$server_ip" "High Disk Usage" "$message" "konajanakirao@gmail.com" "WARNING: High Disk Usage alert"
