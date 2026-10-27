@@ -7,7 +7,7 @@ while IFS= read -r line
 do
     usage=$(echo $line | awk '{print $6}' | cut -d "%" -f)
     partition=$(echo $line | awk '{print $7}')
-    if [ $usage -ge $usage_thresold ];
+    if [ "$usage" -ge "$usage_thresold" ];
         then 
             msg+="High disk usage on $partition :: $usage \n"
     fi
