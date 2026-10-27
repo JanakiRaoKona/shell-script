@@ -11,10 +11,10 @@ do
     partition=$(echo $line | awk '{print $7}')
     if [ "$usage" -ge "$usage_thresold" ];
         then 
-            msg+="High disk usage on $partition :: $usage </br>"
+            msg+="High disk usage on $partition :: $usage <br>"
     fi
 done <<< "$disk_usage" 
 
-echo -e $msg 
+# echo -e $msg 
 
 sh mail.sh "DevOps Team" "$server_ip" "High Disk Usage" "$msg" "konajanakirao@gmail.com" "WARNING: High Disk Usage alert"
