@@ -9,7 +9,7 @@ subject=$6
 
 safe_message=$(echo "$message" | sed 's/[.|$*^\\\/]/\\&/g')
 
-final_body=$(sed -e "s/TO_TEAM/$to_team/g" -e "s/ALERT_TYPE/$alert_type/g" -e "s/SERVER_IP/$server_ip/g" -e "s/message_BODY/$safe_message/g" templete.html)
+final_body=$(sed -e "s/TO_TEAM/$to_team/g" -e "s/ALERT_TYPE/$alert_type/g" -e "s/SERVER_IP/$server_ip/g" -e "s/MESSAGE_BODY/$safe_message/g" templete.html)
 
 {
 echo "To: $to_address"
