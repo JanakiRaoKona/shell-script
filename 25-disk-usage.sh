@@ -11,5 +11,5 @@ do
         then 
             msg+="High disk usage on $partition :: $usage \n"
         else  
-done <<< $disk_usage 
+done <<<"$disk_usage" 
 echo -e $msg 
