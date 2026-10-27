@@ -8,10 +8,8 @@ do
     usage=$(echo $line | awk '{print $6}' | cut -d "%" -f)
     partition=$(echo $line | awk '{print $7}')
     if [ $usage -ge $usage_thresold];
-    then 
-        msg+="High disk usage on $partition :: $usage \n"
-    else
-    fi   
-
+        then 
+            msg+="High disk usage on $partition :: $usage \n"
+        else  
 done <<< $disk_usage 
 echo -e $msg 
