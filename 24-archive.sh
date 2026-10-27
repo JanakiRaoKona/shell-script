@@ -56,3 +56,10 @@ else
     done <<< $files_to_archive
 fi
 
+
+
+/home/ec2-user/.local/bin:
+/home/ec2-user/bin:
+/usr/local/bin:/usr/bin:
+/usr/local/sbin:
+/usr/sbin
