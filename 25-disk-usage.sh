@@ -10,6 +10,8 @@ do
     if [ $usage -ge $usage_thresold];
         then 
             msg+="High disk usage on $partition :: $usage \n"
-        else  
-done <<<"$disk_usage" 
+        else
+    fi
+done <<< "$disk_usage" 
+
 echo -e $msg 
